@@ -1,0 +1,29 @@
+
+" 背景色はモードで切り替えてIMEの切替ミスを防ぐ（2025/06/14）
+" 挿入モード時：明るく → 日本語を打つときと認識
+" ノーマルモード時：暗く → コマンド打つとき
+" ===============================
+" IME状態への注意喚起と視覚的表示
+" ===============================
+" 20250615: InsertLeave 時に背景を元の黒に戻したい
+"   - ctermbg=black はややグレーっぽくなる
+"   - ターミナルの元の背景色に戻すには ctermbg=NONE が自然だった
+
+" 挿入モードに入る時にvim背景色を変える
+autocmd InsertEnter * highlight Normal ctermbg=black guibg=black
+" 挿入モードを離れる時に背景色の指定を解く
+autocmd InsertLeave * highlight Normal ctermbg=NONE guibg=NONE
+" ctermはCUI用、guiはGUI用、bgは背景（fgなら文字）
+" ctremは256色まで、'Xterm colors'を適用
+
+
+" 絶対行番号付与
+set number
+" 相対行番号付与
+set relativenumber
+
+
+" タブ設定（Tab→2Spaces）
+set expandtab
+set tabstop=2
+set shiftwidth=2
